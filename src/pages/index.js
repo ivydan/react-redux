@@ -47,6 +47,6 @@ const reducer = function(state = defaultState, action){
 
 const store = createStore(reducer);
 
-console.log(state)
+console.log(store)
 
 ReactDOM.render(<Page />, document.getElementById('container'));

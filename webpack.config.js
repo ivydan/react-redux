@@ -12,7 +12,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var commonPlugins = [];
 var getEntry = function(){
     var entry = {};
-    glob.sync('./src/**/*.js').forEach(function(name){
+    glob.sync('./src/**/index.js').forEach(function(name){
         var n = name.slice(name.lastIndexOf('src/') + 4, name.length - 3);
         n = n.slice(0, n.lastIndexOf('/'));
         entry[n] = name;
@@ -29,7 +29,10 @@ module.exports = {
         filename: '[name]/index.js'
     },
     resolve:{
-        extensions:['.js','.jsx']
+        extensions:['.js','.jsx'],
+        alias:{
+            routes: 'util/routes.js'
+        }
     },
     module:{
         loaders:[
