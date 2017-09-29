@@ -31,7 +31,7 @@ module.exports = {
     resolve:{
         extensions:['.js','.jsx'],
         alias:{
-            routes: 'util/routes.js'
+            routes: 'util/routes.js',
         }
     },
     module:{
@@ -42,7 +42,7 @@ module.exports = {
                 exclude: /node_modules/
             },{
                 test: /\.less$/,
-                loader: ExtractTextPlugin.extract('style-loader','css-loader!less-loader')
+                loader: 'style-loader!css-loader!less-loader'
             }
         ]
     },
