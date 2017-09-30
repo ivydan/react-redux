@@ -5,6 +5,8 @@ import Login from '../src/login/index';
 import About from '../src/about';
 
 const PageOnEnter = (nextState, replace, next) => {
+	console.log("PageONEnter");
+	debugger;
 	let { pathname} = nextState.location;
 	if(!OrLogin()){
 		let redirectUrl = pathname + nextState.location.search;
@@ -26,7 +28,7 @@ const PageOnEnter = (nextState, replace, next) => {
 
 const PageOnChange = (prevState, nextState, replace, next) => {
 	
-
+console.log("PageChange")
 	next();
 	return;
 }

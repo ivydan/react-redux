@@ -4,10 +4,13 @@
  */
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import Branch from 'components/branch';
 import _ from 'lodash';
+import auth from 'auth';
+import Utils from 'utils';
 import './index.less';
 
-export default class App extends Component{
+class App extends Component{
 	constructor(props){
 		super(props);
 
@@ -28,12 +31,12 @@ export default class App extends Component{
 	}
 
 	_handleSubmit(){
-		console.log(this.state.name)
+		let { redirectUrl } = this.props.location.query;
+		this.props.router.replace(redirectUrl);
 	}
 
     render(){
     	let { name } = this.state;
-    	console.log(this.props)
         return <div className="sd-login">
             <div className="login-content">
             	登录：
@@ -51,3 +54,5 @@ export default class App extends Component{
         </div> 
     }
 }
+
+export default Branch(App);
