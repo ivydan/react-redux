@@ -3,14 +3,15 @@ import { IndexRoute, Route } from 'react-router';
 import Page from '../src/app';
 import Login from '../src/login/index';
 import About from '../src/about';
+import IndexHome from '../src/mainApp/indexHome';
 
 const PageOnEnter = (nextState, replace, next) => {
 	console.log("PageONEnter");
-	debugger;
+	// debugger;
 	let { pathname} = nextState.location;
+	//判断是否需要登陆。
 	if(!OrLogin()){
 		let redirectUrl = pathname + nextState.location.search;
-		console.log(pathname, redirectUrl);
 		replace({
 			pathname: '/login',
 			search: '?redirectUrl=' + encodeURIComponent(redirectUrl),
@@ -18,22 +19,23 @@ const PageOnEnter = (nextState, replace, next) => {
 				redirectUrl: redirectUrl
 			}
 		});
-
 		next();
 		return;
 	}
+
 	next();
 	return;
 }
 
 const PageOnChange = (prevState, nextState, replace, next) => {
 	
-console.log("PageChange")
+	console.log("PageChange")
 	next();
 	return;
 }
 
 const OrLogin = () =>{
+	console.log('COOKIE:', document.cookie , !!document.cookie);
 	return !!document.cookie;
 }
 
@@ -43,6 +45,7 @@ export default (
 
 		</Route>
 		<Route path="/" component={Page} onEnter={PageOnEnter} onChange={PageOnChange} >
+			<IndexRoute component={IndexHome} />
 			<Route path="about" component={About} />
 		</Route>
 	</Route>

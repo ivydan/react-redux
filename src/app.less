@@ -1,0 +1,34 @@
+
+@headerHeight : 60px;
+
+.sdWebPage{
+	
+	header{
+		width: 100%;
+		height: @headerHeight;
+		line-height: @headerHeight;
+		font-size: 25px;
+		font-weight: 600;
+		padding-left: 20px;
+		box-sizing: border-box;;
+		background-color: #c9c8c8;
+	}
+	.container{
+		padding-left: 220px;
+		overflow: hidden;
+		position: relative;
+		.middle{
+			padding: 10px;
+		}
+	}
+	.sub{
+		width: 220px;
+		position: absolute;
+		top: @headerHeight;
+		left: 0;
+		bottom: 0;
+		background-color: #d3d2d2;
+		z-index: 1;
+	}
+
+}

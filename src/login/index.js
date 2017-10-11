@@ -8,6 +8,8 @@ import Branch from 'components/branch';
 import _ from 'lodash';
 import auth from 'auth';
 import Utils from 'utils';
+
+import Ajax from './utils/ajax';
 import './index.less';
 
 class App extends Component{
@@ -19,37 +21,49 @@ class App extends Component{
 						);
 
 		this.state={
-			name: ""
+			num: ""
 		}
 
 	}
 
 	_handleChangeLogin(e){
 		this.setState({
-			name: e.target.value
+			num: e.target.value
 		})
 	}
 
 	_handleSubmit(){
-		let { redirectUrl } = this.props.location.query;
-		this.props.router.replace(redirectUrl);
+		Ajax.login().then((data) => {
+			console.log('data', data);
+			if(data.success){
+				document.cookie = 'num='+this.state.num;
+				let { redirectUrl } = this.props.location.query;
+				this.props.router.replace(redirectUrl);
+			}
+		}).catch((err) => {
+			console.log('Error:', err)
+		})
+		
 	}
 
     render(){
-    	let { name } = this.state;
+    	let { num } = this.state;
         return <div className="sd-login">
+			<div className="login-title">
+				欢迎进入SD系统
+			</div>
             <div className="login-content">
-            	登录：
+            	请输入登录密码：
             	<input 
             		type="text" 
             		onChange={this._handleChangeLogin}
-            		value={name}/>
+            		value={num}/>
 
             	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             	<input 
             		type="button" 
             		onClick={this._handleSubmit}
-            		value="提交"/>
+            		value="确认"/>
             </div>
         </div> 
     }
