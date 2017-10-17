@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-export default class About extends Component{
+export default class Catalog extends Component{
 	constructor(props) {
 		super(props);
 		
@@ -15,7 +15,7 @@ export default class About extends Component{
     render(){
         return (
             <div>
-                About
+                Catalog
             </div>
             )
     }

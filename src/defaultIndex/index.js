@@ -9,7 +9,7 @@ import _ from 'lodash';
 import auth from 'auth';
 import Utils from 'utils';
 
-import './indexHome.less';
+import './index.less';
 
 class App extends Component{
 	constructor(props){

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+import Header from 'components/header'
 import './app.less';
 
 export default class Page extends React.Component{
@@ -19,13 +20,12 @@ export default class Page extends React.Component{
         console.log('Render App！', this.props);
         return (
             <div className="sdWebPage" >
-                <header>
-                    <span>Header内容区</span>
-                </header>
+                <Header />
                 <div className="sub">
                     <ul>
-                        
+                        <li><Link to="/testBcc">testBcc</Link></li>
                         <li><Link to="/about">About</Link></li>
+                        <li><Link to="/catalog">catalog</Link></li>
                     </ul>
                 </div>
                 <div className="container">
