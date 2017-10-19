@@ -50,7 +50,7 @@ class App extends Component{
     	let { num } = this.state;
         return <div className="sd-login">
 			<div className="login-title">
-				欢迎进入SD系统
+				欢迎进入SD系统122
 			</div>
             <div className="login-content">
             	请输入登录密码：

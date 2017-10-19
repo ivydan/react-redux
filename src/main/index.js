@@ -16,4 +16,4 @@ const history = useRouterHistory(createHistory)({
 
 ReactDOM.render(
 	<Router history={history} routes={routes}></Router>
-, document.getElementById("container"))
+, document.getElementById("container"));

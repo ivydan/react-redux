@@ -16,10 +16,26 @@ var getEntry = function(){
         var n = name.slice(name.lastIndexOf('src/') + 4, name.length - 3);
         n = n.slice(0, n.lastIndexOf('/'));
         entry[n] = name;
+        //插件扩展
+        commonPlugins.push(new HtmlWebpackPlugin({
+            title: `SD Page ${n}`,
+            filename: `${n}/${n}.html`,
+            files:  {
+                js: [`./${n}.js`]
+            }
+        }));
     });
     console.info("entry:", entry);
+
     return entry;
 }
+
+/////其他插件
+
+//插件用于给文件头部加注释信息
+commonPlugins.push(new webpack.BannerPlugin('This is a SD System for Test !'));
+//模块热替换
+commonPlugins.push(new webpack.HotModuleReplacementPlugin());
 
 
 module.exports = {
@@ -29,7 +45,7 @@ module.exports = {
         filename: '[name]/index.js'
     },
     resolve:{
-        extensions:['.js','.jsx'],
+        extensions:['.js','.jsx','.json'],
         alias:{
             routes: path.resolve(__dirname, 'util/routes.js'),
             auth: path.resolve(__dirname, 'util/auth.js'),
@@ -46,8 +62,13 @@ module.exports = {
             },{
                 test: /\.less$/,
                 loader: 'style-loader!css-loader!less-loader'
+            },{ 
+                test: /\.(png|jpg)$/, 
+                loader: 'url-loader?limit=8192' 
             }
         ]
     },
-    plugins: commonPlugins
+    plugins: commonPlugins,
+    // devtool: 'inline-source-map'  //编译速度较慢
+    devtool: 'eval-source-map'
 }
