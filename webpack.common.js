@@ -2,12 +2,12 @@
  * Created by Maggie on 17/9/12
  */
 
-var path = require('path');
-var glob = require('glob');
-var fs = require('fs');
-var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const glob = require('glob');
+const fs = require('fs');
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var commonPlugins = [];
 var getEntry = function(){
@@ -26,7 +26,6 @@ var getEntry = function(){
         }));
     });
     console.info("entry:", entry);
-
     return entry;
 }
 
@@ -34,9 +33,8 @@ var getEntry = function(){
 
 //插件用于给文件头部加注释信息
 commonPlugins.push(new webpack.BannerPlugin('This is a SD System for Test !'));
-//模块热替换
-commonPlugins.push(new webpack.HotModuleReplacementPlugin());
-
+//模块热替换 //无效待优化
+// commonPlugins.push(new webpack.HotModuleReplacementPlugin());
 
 module.exports = {
     entry: getEntry(),
@@ -68,7 +66,5 @@ module.exports = {
             }
         ]
     },
-    plugins: commonPlugins,
-    // devtool: 'inline-source-map'  //编译速度较慢
-    devtool: 'eval-source-map'
+    plugins: commonPlugins
 }

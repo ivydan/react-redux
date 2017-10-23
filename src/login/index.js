@@ -10,6 +10,7 @@ import auth from 'auth';
 import Utils from 'utils';
 
 import Ajax from './utils/ajax';
+import { cube } from './utils/test';
 import './index.less';
 
 class App extends Component{
@@ -50,7 +51,7 @@ class App extends Component{
     	let { num } = this.state;
         return <div className="sd-login">
 			<div className="login-title">
-				欢迎进入SD系统122
+				欢迎进入SD系统1
 			</div>
             <div className="login-content">
             	请输入登录密码：

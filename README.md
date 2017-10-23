@@ -35,3 +35,4 @@
 
 * 异步action的需求可以通过Redux原生的middleware设计来实现
 
+* 打开方式 ：http://localhost:8080/webpack-dev-server

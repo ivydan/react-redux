@@ -13,7 +13,6 @@ const history = useRouterHistory(createHistory)({
 	basename 
 });
 
-
 ReactDOM.render(
 	<Router history={history} routes={routes}></Router>
 , document.getElementById("container"));
