@@ -1,10 +1,11 @@
 import React from 'react'
-import { IndexRoute, Route } from 'react-router';
+import { IndexRoute, Route, Redirect } from 'react-router';
 import Page from 'components/page/app';
 import Login from '../src/login/index';
 import About from '../src/about';
 import Test from '../src/test';
 import Catalog from '../src/catalog';
+import Error from '../src/error';
 
 import IndexHome from '../src/defaultIndex';
 
@@ -64,6 +65,8 @@ export default (
 			<Route path="about" component={About} />
 			<Route path="testBcc" component={Test} />
 			<Route path="catalog" component={Catalog} />
+			<Route path="error" component={Error} />
+			<Redirect from="*" to="error" />
 		</Route>
 	</Route>
 )
