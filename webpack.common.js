@@ -18,7 +18,7 @@ var getEntry = function(){
         entry[n] = name;
         //插件扩展
         commonPlugins.push(new HtmlWebpackPlugin({
-            title: `SD Page ${n}`,
+            title: `Web Page ${n}`,
             filename: `${n}/${n}.html`,
             files:  {
                 js: [`./${n}.js`]
@@ -40,7 +40,8 @@ module.exports = {
     entry: getEntry(),
     output:{
         path: path.resolve(__dirname, "./build/"),
-        filename: '[name]/index.js'
+        filename: '[name]/index.js',
+        chunkFilename: '[name].bundle.js'
     },
     resolve:{
         extensions:['.js','.jsx','.json'],
